@@ -14,9 +14,21 @@ struct MovieDetailView: View {
     var body: some View {
         Group {
             if viewModel.movieDetails != nil {
-                Form {
-                    Text(viewModel.movieDetails!.originalTitle)
+                let movie = viewModel.movieDetails!
+                List {
+                    Image(uiImage: UIImage(data: viewModel.moviePoster ?? Data()) ?? UIImage())
+                        .resizable()
+                        .scaledToFit()
+                    
+                    Text(movie.releaseDate)
+                
+                    HStack {
+                        ForEach(movie.genres) {
+                            Text($0.name)
+                        }
+                    }
                 }
+                .navigationBarTitle(movie.title)
             } else {
                 ProgressView()
             }

@@ -9,6 +9,7 @@ import Foundation
 
 class MovieDetailViewModel: ObservableObject {
     @Published var movieDetails: MovieDetails?
+    @Published var moviePoster: Data?
     
     func fetchDetails(for id: Int) {
         let urlString = "https://api.themoviedb.org/3/movie/\(id)?api_key=\(apiKey)&language=en-US"
@@ -24,6 +25,7 @@ class MovieDetailViewModel: ObservableObject {
                     let decodedResponse = try JSONDecoder().decode(MovieDetails.self, from: data)
                         DispatchQueue.main.async {
                             self.movieDetails = decodedResponse
+                            self.loadPoster(id: decodedResponse.posterPath)
                         }
                 } catch  {
                     print(error)
@@ -31,5 +33,17 @@ class MovieDetailViewModel: ObservableObject {
 
             }
         }.resume()
+    }
+    
+    func loadPoster(id posterID: String) {
+        let urlString = "https://www.themoviedb.org/t/p/w1280\(posterID)"
+        guard let url = URL(string: urlString) else { return }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                self.moviePoster = data
+            }
+        }
+        task.resume()
     }
 }
