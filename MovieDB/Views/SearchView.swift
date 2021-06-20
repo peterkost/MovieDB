@@ -12,14 +12,28 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView {
-            HStack {
-                TextField("Search movie name", text: $viewModel.searchQuery)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                NavigationLink(destination: SearchResultView(viewModel: SearchResultViewModel(searchQuery: viewModel.searchQuery))) {
-                    Image(systemName: "magnifyingglass")
+            VStack {
+                HStack {
+                    TextField("enter movie name", text: $viewModel.searchQuery)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                    Button(action: viewModel.fetchResults) {
+                        Image(systemName: "magnifyingglass")
+                    }
+                    .padding()
+                }
+                Spacer()
+                List {
+                    if viewModel.results != nil {
+                        ForEach(viewModel.results!) { result in
+                            HStack {
+                                Text(result.title)
+                            }
+                        }
+                    }
                 }
             }
-            .padding()
+            .navigationBarTitle("Search")
         }
     }
 }
