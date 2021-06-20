@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct MovieDetailView: View {
+    @ObservedObject var viewModel = MovieDetailViewModel()
+    let movieID: Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Group {
+            if viewModel.movieDetails != nil {
+                Form {
+                    Text(viewModel.movieDetails!.originalTitle)
+                }
+            } else {
+                ProgressView()
+            }
+        }
+        .onAppear(perform: {
+            viewModel.fetchDetails(for: movieID)
+        })
     }
 }
 
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView()
+        MovieDetailView(movieID: 14609)
     }
 }

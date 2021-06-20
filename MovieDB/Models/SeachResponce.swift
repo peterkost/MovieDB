@@ -3,7 +3,7 @@
 //  MovieDB
 //
 //  Created by Peter Kostin on 2021-06-20.
-//
+//  with the help of quicktype.io
 
 import Foundation
 

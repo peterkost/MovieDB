@@ -22,12 +22,12 @@ struct SearchView: View {
                     }
                     .padding()
                 }
-                Spacer()
                 List {
                     if viewModel.results != nil {
                         ForEach(viewModel.results!) { result in
-                            HStack {
-                                Text(result.title)
+                            NavigationLink(destination: MovieDetailView(movieID: result.id)) {
+                                Text("\(result.title) (\(String(result.releaseDate.prefix(4))))")
+                                    .font(.headline)
                             }
                         }
                     }
