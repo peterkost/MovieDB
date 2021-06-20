@@ -13,18 +13,20 @@ struct MovieDetailView: View {
     
     var body: some View {
         Group {
-            if viewModel.movieDetails != nil {
+            if viewModel.movieDetails != nil && viewModel.moviePoster != nil {
                 let movie = viewModel.movieDetails!
                 List {
-                    Image(uiImage: UIImage(data: viewModel.moviePoster ?? Data()) ?? UIImage())
+                    Image(uiImage: UIImage(data: viewModel.moviePoster!) ?? UIImage())
                         .resizable()
                         .scaledToFit()
                     
                     Text(movie.releaseDate)
                 
-                    HStack {
-                        ForEach(movie.genres) {
-                            Text($0.name)
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(movie.genres) {
+                                Text($0.name)
+                            }
                         }
                     }
                 }
