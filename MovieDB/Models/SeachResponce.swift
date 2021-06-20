@@ -19,7 +19,7 @@ struct SearchResponce: Codable {
     }
 }
 
-struct Result: Codable {
+struct Result: Codable, Identifiable {
     let adult: Bool
     let backdropPath: String?
     let genreIDS: [Int]

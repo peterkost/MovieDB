@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct SearchView: View {
+    @ObservedObject var viewModel = SearchViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            HStack {
+                TextField("Search movie name", text: $viewModel.searchQuery)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                NavigationLink(destination: SearchResultView(viewModel: SearchResultViewModel(searchQuery: viewModel.searchQuery))) {
+                    Image(systemName: "magnifyingglass")
+                }
+            }
+            .padding()
+        }
     }
 }
 

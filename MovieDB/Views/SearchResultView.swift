@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct SearchResultView: View {
+    @ObservedObject var viewModel: SearchResultViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            if viewModel.results != nil {
+                ForEach(viewModel.results!) { result in
+                    Text(result.title)
+                }
+            } else {
+                Text("No Results")
+            }
+        }
     }
 }
 
 struct SearchResultView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultView()
+        SearchResultView(viewModel: SearchResultViewModel(searchQuery: "Drive"))
     }
 }
