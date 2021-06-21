@@ -3,7 +3,7 @@
 //  MovieDB
 //
 //  Created by Peter Kostin on 2021-06-21.
-//  From: https://stackoverflow.com/a/61234030/15880242
+//  Source: https://stackoverflow.com/a/61234030/15880242
 //
 
 import SwiftUI

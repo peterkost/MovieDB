@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MovieDetailView: View {
     @ObservedObject var viewModel: MovieDetailViewModel
+    @EnvironmentObject var movieList: MovieListViewModel
     
     init(movieID: Int) {
-        print("ran MovieDetailView init")
         viewModel = MovieDetailViewModel(for: movieID)
     }
     
@@ -32,6 +32,10 @@ struct MovieDetailView: View {
                                 Text($0.name)
                             }
                         }
+                    }
+                    
+                    Button("Add to Watchlist") {
+                        movieList.addMovieToWatchlist(movieDetails: movie, moviePoster: viewModel.moviePoster!)
                     }
                 }
                 .navigationBarTitle(movie.title)

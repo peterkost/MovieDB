@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct MovieListView: View {
+    @EnvironmentObject var movieList: MovieListViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach(movieList.movies) { movie in
+                Text(movie.title)
+            }
+        }
     }
 }
 

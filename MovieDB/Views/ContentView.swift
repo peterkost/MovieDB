@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    var movieListViewModel = MovieListViewModel()
     var body: some View {
         TabView {
             MovieListView()
@@ -21,6 +22,7 @@ struct ContentView: View {
                     Text("Search")
                 }
         }
+        .environmentObject(movieListViewModel)
     }
 }
 
