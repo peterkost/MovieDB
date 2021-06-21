@@ -13,7 +13,10 @@ struct MovieListView: View {
     var body: some View {
         List {
             ForEach(movieList.movies) { movie in
-                Text(movie.title)
+                Button(movie.title) {
+                    print(movie.reviews)
+                }
+                
             }
         }
     }

@@ -37,8 +37,15 @@ struct MovieDetailView: View {
                     Button("Add to Watchlist") {
                         movieList.addMovieToWatchlist(movieDetails: movie, moviePoster: viewModel.moviePoster!)
                     }
+                    Button("Review") {
+                        viewModel.showingAddReview = true
+                    }
                 }
                 .navigationBarTitle(movie.title)
+                .sheet(isPresented: $viewModel.showingAddReview, content: {
+                    MovieReviewView(movieDetails: movie, moviePoster: viewModel.moviePoster!)
+                        .environmentObject(movieList)
+                })
             } else {
                 ProgressView()
             }

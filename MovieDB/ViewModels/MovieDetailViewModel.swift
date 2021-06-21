@@ -11,6 +11,8 @@ class MovieDetailViewModel: ObservableObject {
     @Published var movieDetails: MovieDetails?
     @Published var moviePoster: Data?
     
+    @Published var showingAddReview = false
+    
      init(for id: Int) {
         // Fetch details
         let urlString = "https://api.themoviedb.org/3/movie/\(id)?api_key=\(apiKey)&language=en-US"
