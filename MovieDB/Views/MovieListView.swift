@@ -11,13 +11,26 @@ struct MovieListView: View {
     @EnvironmentObject var movieList: MovieListViewModel
     
     var body: some View {
-        List {
-            ForEach(movieList.movies) { movie in
-                Button(movie.title) {
-                    print(movie.reviews)
+        NavigationView {
+            VStack {
+                Picker("pick list", selection: $movieList.listIndex) {
+                    ForEach(0..<2) {
+                        Text(movieList.lists[$0])
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                
+                // TODO: rework to less jank
+                if movieList.listIndex == 0 {
+                    WatchlistView()
+                } else {
+                    WatchedView()
                 }
                 
+                Spacer()
             }
+            .navigationBarTitle("MovieDB")
         }
     }
 }

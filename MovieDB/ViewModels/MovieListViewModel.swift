@@ -8,6 +8,7 @@
 import Foundation
 
 class MovieListViewModel: ObservableObject {
+    // MARK: Used by multiple views as environment object
     static let fileKey = "SavedMovies"
 
     // TODO: convert to hashmap for faster lookup
@@ -20,7 +21,7 @@ class MovieListViewModel: ObservableObject {
         }
     }
     
-    var reviewedMovies: [SavedMovie] {
+    var watchedMovies: [SavedMovie] {
         var res = [SavedMovie]()
         for movie in movies where movie.watched {
             res.append(movie)
@@ -58,27 +59,28 @@ class MovieListViewModel: ObservableObject {
     }
     
     func reviewMovie(movieDetails movie: MovieDetails, moviePoster poster: Data, movieReview review: Review) {
-        print("movie pre count: ", movies.count)
-        print(review)
         // TODO: rework this to be less jank
         let movieIndex = getMovieIndex(withID: movie.id)
         
         // movie is not in watchlist or reviewed list
         if movieIndex == nil {
-            print(1)
             let newMovie = SavedMovie(id: movie.id, title: movie.title, year: movie.releaseDate, poster: poster, watched: true, reviews: [review])
             movies.append(newMovie)
             // movie already in reviewed
         } else if movies[movieIndex!].watched{
-            print(2)
             movies[movieIndex!].reviews.append(review)
             
             // movie is in watchlist
         } else {
-            print(3)
             movies[movieIndex!].watched = true
             movies[movieIndex!].reviews.append(review)
         }
-        print("movie post count: ", movies.count)
     }
+    
+    // MARK: Only used in actual MovieListView
+    // TODO: refactor this into seperate classes
+    
+    @Published var listIndex = 0
+    
+    let lists = ["Watchlist", "Watched"]
 }

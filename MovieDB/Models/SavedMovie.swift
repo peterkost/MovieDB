@@ -21,4 +21,10 @@ struct Review: Codable {
     let score: Int
     let title: String
     let body: String
+    
+    var shortDate: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter.string(from: date)
+    }
 }
