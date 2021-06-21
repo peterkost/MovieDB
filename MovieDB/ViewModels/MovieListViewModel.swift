@@ -76,11 +76,32 @@ class MovieListViewModel: ObservableObject {
             movies[movieIndex!].reviews.append(review)
         }
     }
+    // TODO: refactor this into seperate classes
     
     // MARK: Only used in actual MovieListView
-    // TODO: refactor this into seperate classes
+   
     
     @Published var listIndex = 0
     
     let lists = ["Watchlist", "Watched"]
+    
+    // MARK: Only used in actual MovieDetailsView
+    func getMovieStatus(id: Int) -> MovieStatus {
+        let movieIndex = getMovieIndex(withID: id)
+        if movieIndex == nil {
+            return .new
+        } else if movies[movieIndex!].watched{
+            return .watched
+        } else {
+            return .watchlisted
+        }
+    }
+    
+    func getMovieReviews(id: Int) -> [Review] {
+        watchedMovies.first { $0.id == id }!.reviews
+    }
+}
+
+enum MovieStatus {
+    case watched, watchlisted, new
 }

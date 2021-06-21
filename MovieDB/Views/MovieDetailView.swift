@@ -11,6 +11,8 @@ struct MovieDetailView: View {
     @ObservedObject var viewModel: MovieDetailViewModel
     @EnvironmentObject var movieList: MovieListViewModel
     
+    @State private var movieStatus: MovieStatus = .new
+    
     init(movieID: Int) {
         viewModel = MovieDetailViewModel(for: movieID)
     }
@@ -19,26 +21,50 @@ struct MovieDetailView: View {
         Group {
             if viewModel.movieDetails != nil && viewModel.moviePoster != nil {
                 let movie = viewModel.movieDetails!
-                List {
-                    Image(uiImage: UIImage(data: viewModel.moviePoster!) ?? UIImage())
-                        .resizable()
-                        .scaledToFit()
+                Form {
+                    Section(header: Text("details")) {
+                        Image(uiImage: UIImage(data: viewModel.moviePoster!) ?? UIImage())
+                            .resizable()
+                            .scaledToFit()
+                        
+                        Text(movie.releaseDate)
                     
-                    Text(movie.releaseDate)
-                
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(movie.genres) {
-                                Text($0.name)
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(movie.genres) {
+                                    Text($0.name)
+                                }
                             }
                         }
                     }
                     
-                    Button("Add to Watchlist") {
-                        movieList.addMovieToWatchlist(movieDetails: movie, moviePoster: viewModel.moviePoster!)
+                    Section(header: Text("save")) {
+                        if movieStatus == .new {
+                            Button("Add to Watchlist") {
+                                movieList.addMovieToWatchlist(movieDetails: movie, moviePoster: viewModel.moviePoster!)
+                                movieStatus = .watchlisted
+                            }
+                        }
+
+                        Button("Review") {
+                            viewModel.showingAddReview = true
+                            // FIXME: you can open the review thing without actually saving a reivew
+                            movieStatus = .watchlisted
+                        }
                     }
-                    Button("Review") {
-                        viewModel.showingAddReview = true
+                    
+                    if movieStatus == .watched {
+                        Section(header: Text("your review")) {
+                            List {
+                                ForEach(movieList.getMovieReviews(id: movie.id), id: \.self.date) { review in
+                                    VStack {
+                                        Text(review.title)
+                                            .font(.title)
+                                        Text(review.body)
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 .navigationBarTitle(movie.title)
@@ -50,7 +76,7 @@ struct MovieDetailView: View {
                 ProgressView()
             }
         }
-        
+        .onAppear(perform: { print("appeared"); movieStatus = movieList.getMovieStatus(id: viewModel.movieID) })
     }
 }
 
