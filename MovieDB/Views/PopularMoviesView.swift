@@ -14,20 +14,16 @@ struct PopularMoviesView: View {
         VStack {
             if viewModel.popularMovies != nil {
                 List {
-                    ForEach(Array(viewModel.moviePosters.keys), id: \.self) { i in
-                        VStack {
-                            Image(uiImage: UIImage(data: viewModel.moviePosters[i]!) ?? UIImage())
-                                .resizable()
-                                .scaledToFit()
-                            Text(i)
-                                .font(.subheadline)
+                    ForEach(viewModel.popularMoviesFinal) { movie in
+                        NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: movie.id))) {
+                            VStack {
+                                Image(uiImage: UIImage(data: movie.poster) ?? UIImage())
+                                    .resizable()
+                                    .scaledToFit()
+                                Text(movie.title)
+                                    .font(.subheadline)
+                            }
                         }
-//                        NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: viewModel.popularMovies![i].id))) {
-//                            VStack {
-//
-
-//                            }
-//                        }
                     }
                 }
             } else {

@@ -8,6 +8,13 @@
 import Foundation
 
 class PopularMoviesViewModel: ObservableObject {
+    struct PopularMovie: Identifiable {
+        let title: String
+        let id: Int
+        let poster: Data
+    }
+    @Published var popularMoviesFinal = [PopularMovie]()
+    
     @Published var popularMovies: [PopularMoviesResult]?
     @Published var moviePosters =  [String:Data]()
     
@@ -45,6 +52,7 @@ class PopularMoviesViewModel: ObservableObject {
                 guard let data = data else { return }
                 DispatchQueue.main.async {
                     self.moviePosters[movie.originalTitle] = data
+                    self.popularMoviesFinal.append(PopularMovie(title: movie.title, id: movie.id, poster: data))
                 }
             }
             task.resume()
