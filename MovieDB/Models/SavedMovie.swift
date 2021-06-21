@@ -13,7 +13,7 @@ struct SavedMovie: Codable, Identifiable {
     let year: String
     let poster: Data
     var watched: Bool
-    var review: [Review]
+    var reviews: [Review]
 }
 
 struct Review: Codable {
