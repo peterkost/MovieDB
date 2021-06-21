@@ -22,8 +22,8 @@ struct SearchView: View {
                     }
                     .padding()
                 }
-                List {
-                    if viewModel.results != nil {
+                if viewModel.results != nil {
+                    List {
                         ForEach(viewModel.results!) { result in
                             // NavigationLazyView prevents the MovieDetailView init from being run for every search result
                             NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: result.id))) {
@@ -32,12 +32,15 @@ struct SearchView: View {
                             }
                         }
                     }
+                } else {
+                    PopularMoviesView()
                 }
             }
-            .navigationBarTitle("Search")
         }
+        .navigationBarTitle("Search")
     }
 }
+
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
