@@ -25,7 +25,8 @@ struct SearchView: View {
                 List {
                     if viewModel.results != nil {
                         ForEach(viewModel.results!) { result in
-                            NavigationLink(destination: MovieDetailView(movieID: result.id)) {
+                            // NavigationLazyView prevents the MovieDetailView init from being run for every search result
+                            NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: result.id))) {
                                 Text("\(result.title) (\(String(result.releaseDate.prefix(4))))")
                                     .font(.headline)
                             }

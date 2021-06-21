@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    @ObservedObject var viewModel = MovieDetailViewModel()
-    let movieID: Int
+    @ObservedObject var viewModel: MovieDetailViewModel
+    
+    init(movieID: Int) {
+        print("ran MovieDetailView init")
+        viewModel = MovieDetailViewModel(for: movieID)
+    }
     
     var body: some View {
         Group {
@@ -35,9 +39,7 @@ struct MovieDetailView: View {
                 ProgressView()
             }
         }
-        .onAppear(perform: {
-            viewModel.fetchDetails(for: movieID)
-        })
+        
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90A6C3E92680642E000A2665 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C3E82680642E000A2665 /* NavigationLazyView.swift */; };
 		90AF97DD267F1FB700340974 /* MovieDBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF97DC267F1FB700340974 /* MovieDBApp.swift */; };
 		90AF97DF267F1FB700340974 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF97DE267F1FB700340974 /* ContentView.swift */; };
 		90AF97E1267F1FB700340974 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90AF97E0267F1FB700340974 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		90A6C3E82680642E000A2665 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		90AF97D9267F1FB700340974 /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90AF97DC267F1FB700340974 /* MovieDBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBApp.swift; sourceTree = "<group>"; };
 		90AF97DE267F1FB700340974 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90A6C3E726806401000A2665 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				90DB68B2267F438D0024C7B9 /* Secrets.swift */,
+				90A6C3E82680642E000A2665 /* NavigationLazyView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		90AF97D0267F1FB700340974 = {
 			isa = PBXGroup;
 			children = (
@@ -70,7 +81,7 @@
 		90AF97DB267F1FB700340974 /* MovieDB */ = {
 			isa = PBXGroup;
 			children = (
-				90DB68B2267F438D0024C7B9 /* Secrets.swift */,
+				90A6C3E726806401000A2665 /* Helpers */,
 				90AF9818267F2FA300340974 /* Models */,
 				90AF9810267F2FA300340974 /* ViewModels */,
 				90AF9812267F2FA300340974 /* Views */,
@@ -191,6 +202,7 @@
 			files = (
 				90AF981C267F2FA300340974 /* SearchView.swift in Sources */,
 				90AF981E267F2FA300340974 /* MovieListView.swift in Sources */,
+				90A6C3E92680642E000A2665 /* NavigationLazyView.swift in Sources */,
 				90AF97DF267F1FB700340974 /* ContentView.swift in Sources */,
 				90AF981B267F2FA300340974 /* MovieDetailView.swift in Sources */,
 				90AF9822267F32B000340974 /* SearchViewModel.swift in Sources */,
