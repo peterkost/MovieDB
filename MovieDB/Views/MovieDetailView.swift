@@ -22,15 +22,22 @@ struct MovieDetailView: View {
             if viewModel.movieDetails != nil && viewModel.moviePoster != nil {
                 let movie = viewModel.movieDetails!
                 Form {
-                    Section(header: Text("details")) {
+                    Section {
                         Image(uiImage: UIImage(data: viewModel.moviePoster!) ?? UIImage())
                             .resizable()
                             .scaledToFit()
                         
-                        Text(movie.releaseDate)
+                        NavigationLink(destination: DescriptionView(text: movie.overview)) {
+                            Text(movie.overview)
+                                .lineLimit(3)
+                                .fixedSize(horizontal: false, vertical: false)
+                        }
+                        
+                        Text("Release date: \(movie.releaseDate)")
                     
                         ScrollView(.horizontal) {
                             HStack {
+                                Text("Genres: ")
                                 ForEach(movie.genres) {
                                     Text($0.name)
                                 }
@@ -39,17 +46,17 @@ struct MovieDetailView: View {
                     }
                     
                     Section(header: Text("save")) {
-                        if movieStatus == .new {
-                            Button("Add to Watchlist") {
-                                movieList.addMovieToWatchlist(movieDetails: movie, moviePoster: viewModel.moviePoster!)
-                                movieStatus = .watchlisted
+                            if movieStatus == .new {
+                                Button("Add to Watchlist") {
+                                    movieList.addMovieToWatchlist(movieDetails: movie, moviePoster: viewModel.moviePoster!)
+                                    movieStatus = .watchlisted
+                                }
                             }
-                        }
 
-                        Button("Review") {
-                            viewModel.showingAddReview = true
-                            // FIXME: you can open the review thing without actually saving a reivew
-                            movieStatus = .watchlisted
+                            Button("Review") {
+                                viewModel.showingAddReview = true
+                                // FIXME: you can open the review thing without actually saving a reivew
+                                movieStatus = .watchlisted
                         }
                     }
                     
@@ -57,9 +64,13 @@ struct MovieDetailView: View {
                         Section(header: Text("your review")) {
                             List {
                                 ForEach(movieList.getMovieReviews(id: movie.id), id: \.self.date) { review in
-                                    VStack {
+                                    VStack(alignment: .leading) {
+                                        Text("\(review.score)⭐️")
                                         Text(review.title)
-                                            .font(.title)
+                                            .font(.title3)
+                                        Text(review.shortDate)
+                                            .font(.caption)
+                                        
                                         Text(review.body)
                                     }
                                 }
@@ -76,12 +87,14 @@ struct MovieDetailView: View {
                 ProgressView()
             }
         }
-        .onAppear(perform: { print("appeared"); movieStatus = movieList.getMovieStatus(id: viewModel.movieID) })
+        .onAppear(perform: {movieStatus = movieList.getMovieStatus(id: viewModel.movieID) })
     }
 }
 
 struct MovieDetailView_Previews: PreviewProvider {
+    static let movieList = MovieListViewModel()
     static var previews: some View {
-        MovieDetailView(movieID: 14609)
+        MovieDetailView(movieID: 337404)
+            .environmentObject(movieList)
     }
 }

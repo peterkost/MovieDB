@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		903491922681B9AC00543806 /* AttributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903491912681B9AC00543806 /* AttributionView.swift */; };
+		903491942681C56500543806 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903491932681C56500543806 /* DescriptionView.swift */; };
 		90A6C3E92680642E000A2665 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C3E82680642E000A2665 /* NavigationLazyView.swift */; };
 		90A6C3EB2680672C000A2665 /* SavedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C3EA2680672C000A2665 /* SavedMovie.swift */; };
 		90A6C3ED26806981000A2665 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C3EC26806981000A2665 /* MovieListViewModel.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		903491912681B9AC00543806 /* AttributionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionView.swift; sourceTree = "<group>"; };
+		903491932681C56500543806 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		90A6C3E82680642E000A2665 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		90A6C3EA2680672C000A2665 /* SavedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMovie.swift; sourceTree = "<group>"; };
 		90A6C3EC26806981000A2665 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				90A6C3F4268089CF000A2665 /* WatchedView.swift */,
 				90A6C3FC26809F92000A2665 /* PopularMoviesView.swift */,
 				903491912681B9AC00543806 /* AttributionView.swift */,
+				903491932681C56500543806 /* DescriptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				90A6C3F126808049000A2665 /* MovieReviewViewModel.swift in Sources */,
 				90A6C3ED26806981000A2665 /* MovieListViewModel.swift in Sources */,
 				90AF97DF267F1FB700340974 /* ContentView.swift in Sources */,
+				903491942681C56500543806 /* DescriptionView.swift in Sources */,
 				90AF981B267F2FA300340974 /* MovieDetailView.swift in Sources */,
 				90A6C3FD26809F92000A2665 /* PopularMoviesView.swift in Sources */,
 				90A6C3F3268089C6000A2665 /* WatchlistView.swift in Sources */,
