@@ -33,6 +33,7 @@ struct SearchView: View {
                                     .font(.headline)
                             }
                         }
+                        AttributionView()
                     }
                 } else {
                     PopularMoviesView()

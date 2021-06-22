@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		903491922681B9AC00543806 /* AttributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903491912681B9AC00543806 /* AttributionView.swift */; };
 		90A6C3E92680642E000A2665 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C3E82680642E000A2665 /* NavigationLazyView.swift */; };
 		90A6C3EB2680672C000A2665 /* SavedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C3EA2680672C000A2665 /* SavedMovie.swift */; };
 		90A6C3ED26806981000A2665 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6C3EC26806981000A2665 /* MovieListViewModel.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		903491912681B9AC00543806 /* AttributionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionView.swift; sourceTree = "<group>"; };
 		90A6C3E82680642E000A2665 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		90A6C3EA2680672C000A2665 /* SavedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMovie.swift; sourceTree = "<group>"; };
 		90A6C3EC26806981000A2665 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				90A6C3F2268089C6000A2665 /* WatchlistView.swift */,
 				90A6C3F4268089CF000A2665 /* WatchedView.swift */,
 				90A6C3FC26809F92000A2665 /* PopularMoviesView.swift */,
+				903491912681B9AC00543806 /* AttributionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				90DB68B7267F52650024C7B9 /* MovieDetails.swift in Sources */,
 				90DB68B5267F4E4B0024C7B9 /* MovieDetailViewModel.swift in Sources */,
 				90A6C3FB26809EFE000A2665 /* PopularMoviesResponce.swift in Sources */,
+				903491922681B9AC00543806 /* AttributionView.swift in Sources */,
 				90AF9820267F2FA300340974 /* SeachResponce.swift in Sources */,
 				90A6C3FF26809FC9000A2665 /* PopularMoviesViewModel.swift in Sources */,
 				90AF981D267F2FA300340974 /* AddMovieView.swift in Sources */,

@@ -34,6 +34,7 @@ struct PopularMoviesView: View {
                             }
                         }
                     }
+                    AttributionView()
                 }
 //            } else {
 //                ProgressView()
