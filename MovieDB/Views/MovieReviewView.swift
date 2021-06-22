@@ -25,6 +25,7 @@ struct MovieReviewView: View {
                 
                 Section {
                     TextField("body", text: $viewModel.body)
+                        
                 }
                 RatingView(rating: $viewModel.score)
             }

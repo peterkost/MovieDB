@@ -16,30 +16,25 @@ struct PopularMoviesView: View {
     
     var body: some View {
         VStack {
-//            if viewModel.popularMovies != nil {
-                ScrollView {
-                    Text("Popular Movies")
-                        .font(.title)
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(viewModel.popularMoviesFinal) { movie in
-                            NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: movie.id))) {
-                                VStack {
-                                    Image(uiImage: UIImage(data: movie.poster) ?? UIImage())
-                                        .resizable()
-                                        .scaledToFit()
-                                    Text(movie.title)
-                                        .font(.subheadline)
-                                        .fixedSize(horizontal: true, vertical: true)
-                                }
+            ScrollView {
+                Text("Popular Movies")
+                    .font(.title)
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(viewModel.movies) { movie in
+                        NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: movie.id))) {
+                            VStack {
+                                Image(uiImage: UIImage(data: movie.poster) ?? UIImage())
+                                    .resizable()
+                                    .scaledToFit()
+                                Text(movie.title)
+                                    .font(.subheadline)
+                                    .fixedSize(horizontal: true, vertical: true)
                             }
                         }
                     }
-                    AttributionView()
                 }
-//            } else {
-//                ProgressView()
-//            }
-//            Spacer()
+                AttributionView()
+            }
         }
     }
 }
