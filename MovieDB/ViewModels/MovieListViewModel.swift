@@ -79,11 +79,25 @@ class MovieListViewModel: ObservableObject {
     // TODO: refactor this into seperate classes
     
     // MARK: Only used in actual MovieListView
-   
-    
     @Published var listIndex = 0
     
     let lists = ["Watchlist", "Watched"]
+    
+    func removeFromWatchlist(at offset: IndexSet) {
+        let index = offset[offset.startIndex]
+        let target = watchlistedMovies[index]
+        if let movieIndex = getMovieIndex(withID: target.id) {
+            movies.remove(at: movieIndex)
+        }
+    }
+    
+    func removeFromWatched(at offset: IndexSet) {
+        let index = offset[offset.startIndex]
+        let target = watchedMovies[index]
+        if let movieIndex = getMovieIndex(withID: target.id) {
+            movies.remove(at: movieIndex)
+        }
+    }
     
     // MARK: Only used in actual MovieDetailsView
     func getMovieStatus(id: Int) -> MovieStatus {

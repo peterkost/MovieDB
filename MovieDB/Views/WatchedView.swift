@@ -14,21 +14,22 @@ struct WatchedView: View {
         List {
             ForEach(movieList.watchedMovies) { movie in
                 NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: movie.id))) {
-                HStack {
-                    Image(uiImage: UIImage(data: movie.poster) ?? UIImage())
-                        .resizable()
-                        .frame(width: posterHeight * posterAspectRatio, height: posterHeight)
-                        .scaledToFit()
-                    
-                    VStack(alignment: .leading) {
-                        Text("\(movie.title) (\(String(movie.year.prefix(4))))")
-                            .font(.headline)
-                        Text("Reviewed on: \(movie.reviews.last!.shortDate)")
-                        Text("Rating: \(movie.reviews.last!.score)")
+                    HStack {
+                        Image(uiImage: UIImage(data: movie.poster) ?? UIImage())
+                            .resizable()
+                            .frame(width: posterHeight * posterAspectRatio, height: posterHeight)
+                            .scaledToFit()
+                        
+                        VStack(alignment: .leading) {
+                            Text("\(movie.title) (\(String(movie.year.prefix(4))))")
+                                .font(.headline)
+                            Text("Reviewed on: \(movie.reviews.last!.shortDate)")
+                            Text("Rating: \(movie.reviews.last!.score)")
+                        }
                     }
                 }
             }
-            }
+            .onDelete(perform: movieList.removeFromWatched)
         }
     }
     
