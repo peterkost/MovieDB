@@ -18,12 +18,15 @@ struct MovieReviewView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                TextField("review title", text: $viewModel.title)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                TextField("review body", text: $viewModel.body)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Stepper("rating", value: $viewModel.score, in: 1...10)
+            Form {
+                Section {
+                    TextField("title", text: $viewModel.title)
+                }
+                
+                Section {
+                    TextField("body", text: $viewModel.body)
+                }
+                RatingView(rating: $viewModel.score)
             }
             .navigationBarTitle("Review")
             .navigationBarItems(leading: Button(action: { presentationMode.wrappedValue.dismiss() }) {
@@ -41,7 +44,10 @@ struct MovieReviewView: View {
 }
 
 //struct MovieReviewView_Previews: PreviewProvider {
+//    static let movieList = MovieListViewModel()
 //    static var previews: some View {
-//        MovieReviewView()
+//        MovieReviewView(movieDetails: <#MovieDetails#>, moviePoster: <#Data#>)
+//            .environmentObject(movieList)
+//
 //    }
 //}
