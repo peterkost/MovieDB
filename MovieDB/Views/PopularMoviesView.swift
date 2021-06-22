@@ -9,27 +9,36 @@ import SwiftUI
 
 struct PopularMoviesView: View {
     @ObservedObject var viewModel = PopularMoviesViewModel()
+    let columns = [
+            GridItem(.adaptive(minimum: 150)),
+            GridItem(.adaptive(minimum: 150))
+        ]
     
     var body: some View {
         VStack {
-            if viewModel.popularMovies != nil {
-                List {
-                    ForEach(viewModel.popularMoviesFinal) { movie in
-                        NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: movie.id))) {
-                            VStack {
-                                Image(uiImage: UIImage(data: movie.poster) ?? UIImage())
-                                    .resizable()
-                                    .scaledToFit()
-                                Text(movie.title)
-                                    .font(.subheadline)
+//            if viewModel.popularMovies != nil {
+                ScrollView {
+                    Text("Popular Movies")
+                        .font(.title)
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(viewModel.popularMoviesFinal) { movie in
+                            NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: movie.id))) {
+                                VStack {
+                                    Image(uiImage: UIImage(data: movie.poster) ?? UIImage())
+                                        .resizable()
+                                        .scaledToFit()
+                                    Text(movie.title)
+                                        .font(.subheadline)
+                                        .fixedSize(horizontal: true, vertical: true)
+                                }
                             }
                         }
                     }
                 }
-            } else {
-                ProgressView()
-            }
-            Spacer()
+//            } else {
+//                ProgressView()
+//            }
+//            Spacer()
         }
     }
 }

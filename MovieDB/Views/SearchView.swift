@@ -18,13 +18,15 @@ struct SearchView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     Button(action: viewModel.fetchResults) {
+                        
                         Image(systemName: "magnifyingglass")
                     }
                     .padding()
                 }
-                if viewModel.results != nil {
+//                if viewModel.results != nil {
+                if !viewModel.showPopular {
                     List {
-                        ForEach(viewModel.results!) { result in
+                        ForEach(viewModel.results) { result in
                             // NavigationLazyView prevents the MovieDetailView init from being run for every search result
                             NavigationLink(destination: NavigationLazyView(MovieDetailView(movieID: result.id))) {
                                 Text("\(result.title) (\(String(result.releaseDate.prefix(4))))")
@@ -36,8 +38,9 @@ struct SearchView: View {
                     PopularMoviesView()
                 }
             }
+            .navigationBarTitle("Search")
         }
-        .navigationBarTitle("Search")
+
     }
 }
 
