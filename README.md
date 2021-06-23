@@ -1,6 +1,6 @@
 [![Swift Version][swift-image]][swift-url]
 [![License][license-image]][license-url]
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)]()
+[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)][ios-url]
 
 # MovieDB
 
@@ -44,3 +44,4 @@ Distributed under the MIT license. See `LICENSE` for more information.
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
+[ios-url]: https://www.apple.com/ios/
