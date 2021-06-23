@@ -7,7 +7,7 @@
 <br />
 <p align="center">
   <p align="center">
-    An app to keep track of movies you've seen and those that you'd like to watch. You can leave multiple reviews on a movie to keep save your thoughts about rewatches. The app lets you search for movies, see their details, and see popular movies.
+    Save movies you've seen and those that you'd like to watch. You can leave multiple reviews on a movie to keep track of your thoughts about rewatches. The app lets you search for movies, see their details, and see popular movies.
   </p>
 </p>
 
